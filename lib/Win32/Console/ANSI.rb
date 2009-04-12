@@ -304,7 +304,7 @@ module Win32
           unless encoding =~ /ASCII/
             Iconv.new(oem, encoding).iconv(s) 
           else
-            return s
+            s
           end
         end
       end
