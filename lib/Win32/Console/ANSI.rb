@@ -302,7 +302,11 @@ module Win32
           oem = 'CP'+ OEM.to_s
           
           unless encoding =~ /ASCII/
-            Iconv.new(oem, encoding).iconv(s) 
+            begin
+              Iconv.new(oem, encoding).iconv(s)
+            rescue Iconv::IllegalSequence
+              Iconv.new(oem + '//IGNORE//TRANSLIT', encoding).iconv(s) # temporary solution :(
+            end
           else
             s
           end
