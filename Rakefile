@@ -5,7 +5,7 @@ require 'rake/extensiontask'
 
 spec = Gem::Specification.new do |s|
   s.name              = 'win32console'
-  s.version           = '1.2.0'
+  s.version           = '1.2.0.1'
   s.platform          = Gem::Platform::RUBY
   s.has_rdoc          = true
   s.extra_rdoc_files  = %w[ README.txt README_GEM.txt INSTALL.txt HISTORY.txt HISTORY_GEM.txt ]

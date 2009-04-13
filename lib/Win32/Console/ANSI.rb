@@ -299,16 +299,12 @@ module Win32
 
         def _conv(s)
           encoding = s.encoding.to_s
-          oem = 'CP'+ OEM.to_s
+          oem = "CP#{OEM}"
           
-          unless encoding =~ /ASCII/
-            begin
-              Iconv.new(oem, encoding).iconv(s)
-            rescue Iconv::IllegalSequence
-              Iconv.new(oem + '//IGNORE//TRANSLIT', encoding).iconv(s) # temporary solution :(
-            end
-          else
-            s
+          begin
+            Iconv.new(oem, encoding).iconv(s)
+          rescue
+            return s
           end
         end
       end
